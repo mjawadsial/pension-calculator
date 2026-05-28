@@ -1,0 +1,768 @@
+@import 'tailwindcss';
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+
+@theme {
+    --font-sans: 'BDO Grotesk', ui-sans-serif, system-ui, sans-serif;
+}
+
+@font-face {
+    font-family: 'BDO Grotesk';
+    src: url('../fonts/BDOGrotesk-Regular.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'BDO Grotesk';
+    src: url('../fonts/BDOGrotesk-Medium.woff2') format('woff2');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'BDO Grotesk';
+    src: url('../fonts/BDOGrotesk-DemiBold.woff2') format('woff2');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'BDO Grotesk';
+    src: url('../fonts/BDOGrotesk-Bold.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Pencal Jameel Kasheeda';
+    src: url('../fonts/jameel-noori-kasheeda.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+:root {
+    --theme-bg: #ffffff;
+    --theme-surface: #f9fafb;
+    --theme-text: #111827;
+    --theme-muted: #475569;
+    --theme-accent: #0f766e;
+    --theme-accent-text: #ffffff;
+    --theme-border: #e5e7eb;
+    --theme-input-bg: #ffffff;
+    --urdu-font-stack: 'Jameel Noori Nastaleeq', serif;
+}
+
+body {
+    background: var(--theme-bg);
+    color: var(--theme-text);
+    font-family: var(--font-sans);
+}
+
+html[lang='en'] body,
+html[lang='en'] input,
+html[lang='en'] select,
+html[lang='en'] textarea,
+html[lang='en'] button:not(.stepper-btn) {
+    font-family: 'BDO Grotesk', ui-sans-serif, system-ui, sans-serif;
+}
+
+html[lang='ur'][data-urdu-font='jameel-noori'] {
+    --urdu-font-stack: 'Jameel Noori Nastaleeq', serif;
+}
+
+html[lang='ur'][data-urdu-font='jameel-noori-kasheeda'] {
+    --urdu-font-stack: 'Pencal Jameel Kasheeda', 'Jameel Noori Nastaleeq', serif;
+}
+
+html[lang='ur'] body,
+html[lang='ur'] input,
+html[lang='ur'] select,
+html[lang='ur'] textarea,
+html[lang='ur'] button {
+    font-family: var(--urdu-font-stack);
+    font-size: 1.24rem;
+    line-height: 1.9;
+}
+
+html[lang='ur'] h1,
+html[lang='ur'] h2,
+html[lang='ur'] h3 {
+    font-size: 1.5rem;
+    line-height: 1.85;
+}
+
+html[lang='ur'] label,
+html[lang='ur'] .text-sm {
+    font-size: 1.22rem;
+    line-height: 1.8;
+}
+
+/* Urdu mode only: strict black/white text per theme mode */
+html[lang='ur'][data-theme-mode='light'] {
+    --theme-text: #000000;
+    --theme-muted: #000000;
+    --theme-accent-text: #000000;
+}
+
+html[lang='ur'][data-theme-mode='dark'] {
+    --theme-text: #ffffff;
+    --theme-muted: #ffffff;
+    --theme-accent-text: #000000;
+}
+
+html[lang='ur'][data-theme-mode='light'] body,
+html[lang='ur'][data-theme-mode='light'] h1,
+html[lang='ur'][data-theme-mode='light'] h2,
+html[lang='ur'][data-theme-mode='light'] h3,
+html[lang='ur'][data-theme-mode='light'] label,
+html[lang='ur'][data-theme-mode='light'] p,
+html[lang='ur'][data-theme-mode='light'] span,
+html[lang='ur'][data-theme-mode='light'] input,
+html[lang='ur'][data-theme-mode='light'] select,
+html[lang='ur'][data-theme-mode='light'] textarea,
+html[lang='ur'][data-theme-mode='light'] button {
+    color: #000000;
+}
+
+html[lang='ur'][data-theme-mode='dark'] body,
+html[lang='ur'][data-theme-mode='dark'] h1,
+html[lang='ur'][data-theme-mode='dark'] h2,
+html[lang='ur'][data-theme-mode='dark'] h3,
+html[lang='ur'][data-theme-mode='dark'] label,
+html[lang='ur'][data-theme-mode='dark'] p,
+html[lang='ur'][data-theme-mode='dark'] span,
+html[lang='ur'][data-theme-mode='dark'] input,
+html[lang='ur'][data-theme-mode='dark'] select,
+html[lang='ur'][data-theme-mode='dark'] textarea {
+    color: #ffffff;
+}
+
+html[lang='ur'][data-theme-mode='dark'] button,
+html[lang='ur'][data-theme-mode='dark'] .btn-primary,
+html[lang='ur'][data-theme-mode='dark'] .btn-secondary,
+html[lang='ur'][data-theme-mode='dark'] .btn-ghost,
+html[lang='ur'][data-theme-mode='dark'] .stepper-btn {
+    color: #000000;
+}
+
+html[lang='ur'][data-theme-mode='dark'] button svg,
+html[lang='ur'][data-theme-mode='dark'] .btn-primary svg,
+html[lang='ur'][data-theme-mode='dark'] .btn-secondary svg,
+html[lang='ur'][data-theme-mode='dark'] .btn-ghost svg {
+    color: #000000;
+}
+
+html[lang='ur'][data-theme-mode='dark'] .app-modal button,
+html[lang='ur'][data-theme-mode='dark'] .app-modal .btn-secondary,
+html[lang='ur'][data-theme-mode='dark'] .app-modal .btn-primary {
+    color: #ffffff;
+}
+
+html[lang='ur'][data-theme-mode='dark'] .app-modal button svg {
+    color: #ffffff;
+}
+
+html[lang='ur'] svg {
+    color: inherit;
+}
+
+.icon-fixed-white,
+.icon-fixed-white svg {
+    color: #ffffff !important;
+}
+
+html[lang='ur'][data-theme-mode='dark'] .icon-fixed-white,
+html[lang='ur'][data-theme-mode='dark'] .icon-fixed-white svg,
+html[lang='ur'][data-theme-mode='light'] .icon-fixed-white,
+html[lang='ur'][data-theme-mode='light'] .icon-fixed-white svg {
+    color: #ffffff !important;
+}
+
+html[lang='ur'] .opacity-70,
+html[lang='ur'] .opacity-80 {
+    opacity: 1;
+}
+
+.panel {
+    background: var(--theme-surface);
+    border: 1px solid color-mix(in srgb, var(--theme-border) 52%, transparent);
+}
+
+.input-core {
+    border: 2px solid color-mix(in srgb, var(--theme-border) 45%, transparent);
+    background: var(--theme-input-bg);
+    color: var(--theme-text);
+}
+
+.input-core:focus {
+    outline: none;
+    border: 2px solid transparent;
+    background-image:
+        linear-gradient(var(--theme-input-bg), var(--theme-input-bg)),
+        linear-gradient(120deg, var(--theme-border), var(--theme-accent), var(--theme-border));
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+    background-size: 100% 100%, 220% 100%;
+    animation: border-shimmer 1.3s linear infinite;
+}
+
+.input-core::placeholder {
+    color: var(--theme-muted);
+}
+
+.btn-primary {
+    background: var(--theme-accent);
+    color: var(--theme-accent-text);
+}
+
+.btn-secondary {
+    border: 1px solid var(--theme-border);
+    background: var(--theme-input-bg);
+    color: var(--theme-text);
+}
+
+.btn-ghost {
+    border: 1px solid color-mix(in srgb, var(--theme-border) 55%, transparent);
+    background: transparent;
+    color: var(--theme-text);
+}
+
+.btn-ghost:hover {
+    border-color: color-mix(in srgb, var(--theme-accent) 40%, var(--theme-border));
+    background: color-mix(in srgb, var(--theme-accent) 10%, transparent);
+}
+
+.btn-active-shimmer {
+    border: 1px solid transparent !important;
+    background-image:
+        linear-gradient(var(--theme-input-bg), var(--theme-input-bg)),
+        linear-gradient(120deg, var(--theme-border), var(--theme-accent), var(--theme-border));
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+    background-size: 100% 100%, 230% 100%;
+    animation: border-shimmer 1.3s linear infinite;
+}
+
+.toggle-row {
+    position: relative;
+    width: 122px;
+    height: 40px;
+    direction: ltr;
+}
+
+.lang-label {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 0.85rem;
+    font-weight: 800;
+    color: #bcc2cd;
+    letter-spacing: 0.3px;
+    user-select: none;
+    transition: color 0.25s ease;
+    font-family: 'Jameel Noori Nastaleeq';
+}
+
+.label-left {
+    left: 0;
+}
+
+.label-right {
+    right: 0;
+}
+
+.switch-track {
+    position: absolute;
+    left: 28px;
+    top: 0;
+    width: 66px;
+    height: 40px;
+    border-radius: 9999px;
+    border: 1px solid color-mix(in srgb, var(--theme-border) 70%, transparent);
+    background: var(--theme-input-bg);
+    transition: all 0.3s ease;
+    text-decoration: none;
+    overflow: hidden;
+}
+
+.flag-knob {
+    position: absolute;
+    top: 50%;
+    left: 4px;
+    width: 32px;
+    height: 32px;
+    border-radius: 9999px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background-color: transparent;
+    transition: transform 0.35s cubic-bezier(0.25, 0.8, 0.25, 1);
+    transform: translate(0, -50%);
+}
+
+.flag-knob::after {
+    content: none;
+}
+
+.flag-svg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    transform: none;
+    display: block;
+}
+
+.row-en .flag-knob {
+    transform: translate(0, -50%);
+}
+
+.row-en .flag-svg {
+    transform: scale(1.9);
+}
+
+.row-ur .flag-knob {
+    transform: translate(26px, -50%);
+}
+
+.row-en .label-left {
+    color: var(--theme-text);
+}
+
+.row-en .label-right {
+    color: var(--theme-muted);
+}
+
+.row-ur .label-left {
+    color: var(--theme-muted);
+}
+
+.row-ur .label-right {
+    color: var(--theme-text);
+}
+
+select,
+input,
+textarea {
+    color: var(--theme-text);
+}
+
+input[type='date']::-webkit-calendar-picker-indicator {
+    opacity: 0.9;
+}
+
+html[data-theme-mode='dark'] input[type='date']::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+}
+
+html[dir='rtl'] .text-left {
+    text-align: right;
+}
+
+html[dir='rtl'] .toggle-row {
+    margin-left: 0.25rem;
+}
+
+html[lang='ur'] .urdu-font-row .text-sm,
+html[lang='ur'] .urdu-font-row .btn-secondary {
+    font-size: 0.9rem;
+    line-height: 1.35;
+}
+
+.theme-swatch {
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.35);
+}
+
+.government-radio {
+    width: 1.05rem;
+    height: 1.05rem;
+    accent-color: var(--theme-accent);
+    cursor: pointer;
+}
+
+.government-radio-label {
+    color: var(--theme-text);
+}
+
+.stepper-wrap {
+    position: relative;
+}
+
+.stepper-controls {
+    position: absolute;
+    right: 0.35rem;
+    top: 0.3rem;
+    bottom: 0.3rem;
+    width: 5rem;
+    display: flex;
+    align-items: stretch;
+    gap: 0;
+    border: 1px solid color-mix(in srgb, var(--theme-accent) 75%, transparent);
+    border-radius: 9999px;
+    overflow: hidden;
+    background: color-mix(in srgb, var(--theme-accent) 88%, black 12%);
+}
+
+.stepper-btn {
+    flex: 1 1 50%;
+    width: auto;
+    min-width: 0;
+    height: auto;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    border: none;
+    border-radius: 0;
+    background: transparent;
+    color: var(--theme-accent-text);
+    line-height: 1;
+}
+
+.stepper-btn-down {
+    border-right: 1px solid color-mix(in srgb, var(--theme-accent) 55%, var(--theme-border) 45%);
+}
+
+.stepper-icon {
+    width: 1.05rem;
+    height: 1.05rem;
+}
+
+.stepper-btn:hover {
+    background: color-mix(in srgb, var(--theme-accent) 70%, white 12%);
+}
+
+.stepper-btn:active {
+    background: color-mix(in srgb, var(--theme-accent) 55%, black 10%);
+}
+
+html[lang='ur'] .stepper-controls {
+    right: auto;
+    left: 0.35rem;
+}
+
+html[lang='ur'] .stepper-input {
+    padding-right: 0.75rem;
+    padding-left: 6rem;
+}
+
+.field-help-wrap {
+    position: relative;
+    margin-inline-start: 0.35rem;
+}
+
+.help-dot {
+    width: 1.45rem;
+    height: 1.45rem;
+    border-radius: 9999px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.95rem;
+    font-weight: 800;
+    line-height: 1;
+    border: 1px solid color-mix(in srgb, var(--theme-border) 70%, transparent);
+    background: color-mix(in srgb, var(--theme-accent) 55%, transparent);
+    color: #ffffff;
+}
+
+html[lang='ur'][data-theme-mode='dark'] button.help-dot,
+html[lang='ur'][data-theme-mode='light'] button.help-dot,
+html[lang='en'] button.help-dot {
+    color: #ffffff;
+}
+
+.help-tooltip {
+    position: absolute;
+    top: 1.3rem;
+    z-index: 50;
+    width: 18rem;
+    border-radius: 0.65rem;
+    border: 1px solid color-mix(in srgb, var(--theme-border) 68%, transparent);
+    background: var(--theme-surface);
+    color: var(--theme-text);
+    padding: 0.65rem 0.75rem;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+}
+
+.help-tooltip-right {
+    left: 0;
+}
+
+.help-tooltip-left {
+    right: 0;
+}
+
+.help-title {
+    font-size: 0.72rem;
+    font-weight: 700;
+}
+
+.help-body {
+    font-size: 0.72rem;
+    line-height: 1.35;
+    color: var(--theme-muted);
+}
+
+.help-modal-wrap {
+    position: fixed;
+    inset: 0;
+    z-index: 60;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    background: rgba(0, 0, 0, 0.4);
+}
+
+.help-modal-content {
+    width: min(96vw, 24rem);
+    max-height: min(82vh, 32rem);
+    overflow: auto;
+}
+
+.help-modal-content .help-title {
+    font-size: 2.16rem;
+    line-height: 1.2;
+}
+
+.help-modal-content .help-body {
+    font-size: 2.16rem;
+    line-height: 1.3;
+}
+
+/* Urdu mode: modal text 30% smaller */
+html[lang='ur'] .app-modal h1,
+html[lang='ur'] .app-modal h2,
+html[lang='ur'] .app-modal h3,
+html[lang='ur'] .app-modal h4 {
+    font-size: calc(1.5rem * 0.7);
+    line-height: 1.6;
+}
+
+html[lang='ur'] .app-modal .text-sm,
+html[lang='ur'] .app-modal label,
+html[lang='ur'] .app-modal p,
+html[lang='ur'] .app-modal span:not(.theme-swatch),
+html[lang='ur'] .app-modal button {
+    font-size: calc(1.22rem * 0.7);
+    line-height: 1.5;
+}
+
+html[lang='ur'] .app-modal .text-\[11px\] {
+    font-size: calc(11px * 0.7);
+}
+
+html[lang='ur'] .app-modal .urdu-font-row .text-sm,
+html[lang='ur'] .app-modal .urdu-font-row .btn-secondary {
+    font-size: calc(0.9rem * 0.7);
+}
+
+html[lang='ur'] .help-modal-content .help-title,
+html[lang='ur'] .help-modal-content .help-body {
+    font-size: calc(2.16rem * 0.7);
+    line-height: 1.25;
+}
+
+.stepper-input::-webkit-outer-spin-button,
+.stepper-input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.stepper-input[type='number'] {
+    -moz-appearance: textfield;
+}
+
+.theme-range {
+    -webkit-appearance: none;
+    appearance: none;
+    height: 0.4rem;
+    border-radius: 9999px;
+    background: color-mix(in srgb, var(--theme-accent) 28%, var(--theme-surface));
+    outline: none;
+}
+
+.theme-range::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 1.1rem;
+    height: 1.1rem;
+    border-radius: 9999px;
+    border: 2px solid var(--theme-surface);
+    background: var(--theme-accent);
+    box-shadow: 0 0 0 1px color-mix(in srgb, var(--theme-accent) 60%, transparent);
+}
+
+.theme-range::-moz-range-thumb {
+    width: 1.1rem;
+    height: 1.1rem;
+    border-radius: 9999px;
+    border: 2px solid var(--theme-surface);
+    background: var(--theme-accent);
+}
+
+.theme-range::-moz-range-track {
+    height: 0.4rem;
+    border-radius: 9999px;
+    background: color-mix(in srgb, var(--theme-accent) 28%, var(--theme-surface));
+}
+
+@keyframes border-shimmer {
+    0% {
+        background-position: 0 0, 200% 0;
+    }
+    100% {
+        background-position: 0 0, 0% 0;
+    }
+}
+
+.lang-transition-screen {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+    opacity: 1;
+    transition: opacity 0.45s ease;
+    pointer-events: all;
+}
+
+html.lang-transition-pending .lang-transition-screen,
+.lang-transition-screen.is-visible {
+    display: flex !important;
+}
+
+html.lang-transition-pending[data-theme-mode='light'] .lang-transition-screen {
+    background: #ffffff;
+}
+
+html.lang-transition-pending[data-theme-mode='dark'] .lang-transition-screen {
+    background: #000000;
+}
+
+.lang-transition-screen.is-fading {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.lang-transition-title {
+    font-size: clamp(1.75rem, 5vw, 2.5rem);
+    font-weight: 700;
+    line-height: 1.15;
+    text-align: center;
+    font-family: 'BDO Grotesk', ui-sans-serif, system-ui, sans-serif;
+}
+
+.lang-transition-line-desktop {
+    display: none;
+    color: var(--theme-accent);
+}
+
+.lang-transition-line-mobile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.15rem;
+    color: var(--theme-accent);
+}
+
+.lang-transition-title.is-shimmering .lang-transition-line-desktop,
+.lang-transition-title.is-shimmering .lang-transition-line-mobile {
+    background: linear-gradient(
+        90deg,
+        var(--theme-accent) 0%,
+        color-mix(in srgb, var(--theme-accent) 35%, #ffffff) 50%,
+        var(--theme-accent) 100%
+    );
+    background-size: 220% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+    animation: lang-title-shimmer 1.5s linear forwards;
+}
+
+@media (min-width: 640px) {
+    .lang-transition-line-desktop {
+        display: inline;
+    }
+
+    .lang-transition-line-mobile {
+        display: none;
+    }
+}
+
+@keyframes lang-title-shimmer {
+    0% {
+        background-position: 100% 50%;
+    }
+
+    25% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    75% {
+        background-position: 0% 50%;
+    }
+
+    100% {
+        background-position: 100% 50%;
+    }
+}
+
+@media print {
+    .no-print {
+        display: none !important;
+    }
+
+    body {
+        background: #ffffff !important;
+        color: #000000 !important;
+    }
+
+    .result-panel,
+    .result-panel * {
+        color: #000000 !important;
+    }
+
+    .result-panel {
+        box-shadow: none;
+        border: none;
+    }
+
+    .site-footer {
+        display: block !important;
+        opacity: 1 !important;
+        color: #000000 !important;
+        border-color: #cccccc !important;
+        page-break-inside: avoid;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: 0 auto;
+        max-width: 100%;
+        padding: 0.75rem 1rem;
+        background: #ffffff;
+        border-top: 1px solid #cccccc;
+    }
+
+    main {
+        padding-bottom: 3rem;
+    }
+}
